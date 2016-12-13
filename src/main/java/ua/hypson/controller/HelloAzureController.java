@@ -1,13 +1,20 @@
 package ua.hypson.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ua.hypson.domain.Greeting;
+import ua.hypson.service.GreetingService;
 
 @RestController
 public class HelloAzureController {
 
+    @Autowired
+    private GreetingService greetingService;
+
     @RequestMapping("/")
     public String helloAzure() {
-        return "Hello, Azure";
+        greetingService.save(new Greeting("Hello, Azure!"));
+        return greetingService.getGreeting(1L).getMessage();
     }
 }
