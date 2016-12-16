@@ -14,7 +14,7 @@ public class HelloAzureController {
 
     @RequestMapping("/")
     public String helloAzure() {
-        greetingService.save(new Greeting("Hello from deploy script!"));
+        greetingService.save(new Greeting("Hello from deploy from jenkins!"));
         return greetingService.getGreeting(1L).getMessage();
     }
 }
